@@ -2,7 +2,7 @@
 
 A simple boilerplate react app built from scratch.
 
-It includes style and file loaders as well as a js bundler.
+It includes style and file loaders as well as a js bundler. It also supports hot-reload in development mode.
 
 ### Available Scripts
 
