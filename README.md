@@ -1,8 +1,10 @@
-# React Boilerplate
+## React Boilerplate
 
 A simple boilerplate react app built from scratch.
 
-## Available Scripts
+It includes style and file loaders as well as a js bundler.
+
+### Available Scripts
 
 In the project directory, you can run:
 
