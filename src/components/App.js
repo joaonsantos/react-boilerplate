@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root';
 import React, { Component } from "react";
 
 import logo from "../imgs/logo.svg";
-import "../style/App.css"
+import appStyles from "../style/App.module.css"
 
 class App extends Component {
   constructor(props) {
@@ -25,12 +25,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className={appStyles.app}>
+        <header className={appStyles.header}>
+          <img src={logo} className={appStyles.logo} alt="logo" />
+          <h1 className={appStyles.title}>Welcome to React</h1>
         </header>
-        <p className="App-intro">
+        <p className={appStyles.intro}>
           To get started, edit <code>src/components/App.js</code> and save to reload.
         </p>
       </div>
