@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
+  entry: ['react-hot-loader/patch', './src'],
   mode: "development",
   devtool: "inline-source-map",
   devServer: {
