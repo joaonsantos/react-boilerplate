@@ -9,6 +9,22 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            cacheDirectory: true,
+            babelrc: false,
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  "targets": "> 0.25%, not dead"
+                }
+              ],
+              "@babel/preset-react"
+            ],
+            plugins: [
+              "react-hot-loader/babel"
+            ]
+          }
         }
       },
       {
