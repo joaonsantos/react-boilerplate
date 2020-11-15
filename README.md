@@ -4,6 +4,10 @@ A simple boilerplate react app built from scratch.
 
 It includes style and file loaders as well as a js bundler. It also supports hot-reload in development mode.
 
+### Support for React 17
+
+This setup does not support react 17 until https://github.com/webpack/webpack-dev-server/pull/2828 is merged.
+
 ### Available Scripts
 
 In the project directory, you can run:
