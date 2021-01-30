@@ -1,15 +1,23 @@
 const path = require('path');
-const merge = require('webpack-merge');
+const { merge } = require("webpack-merge");
 const common = require('./webpack.common.js');
+const { WebpackPluginServe } = require('webpack-plugin-serve');
 
 module.exports = merge(common, {
-  entry: ['react-hot-loader/patch', './src'],
-  mode: "development",
+  watch: true,
+  entry: ["./src", "webpack-plugin-serve/client"],
   devtool: "inline-source-map",
-  devServer: {
-    contentBase: path.join(__dirname, "public/"),
-    publicPath: "http://localhost:3000/dist/",
-    port: 3000,
-    hotOnly: true,
-  }
+  plugins: [
+    new WebpackPluginServe({
+      host: "127.0.0.1",
+      port: process.env.PORT || 3000,
+      static: path.join(__dirname, "dist/"),
+      open: true,
+      progress: "minimal",
+      hmr: 'refresh-on-failure',
+      liveReload: true,
+      waitForBuild: true,
+      historyFallback: true,
+    }),
+  ],
 });
