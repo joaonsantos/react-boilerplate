@@ -6,7 +6,7 @@ It includes style and file loaders as well as a js bundler. It also supports hot
 
 ### Support for React 17
 
-This setup does not support react 17 until https://github.com/webpack/webpack-dev-server/pull/2828 is merged.
+Support for react 17 is here!
 
 ### Available Scripts
 
