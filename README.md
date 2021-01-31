@@ -1,8 +1,8 @@
 ## React Boilerplate
 
-A simple boilerplate react app built from scratch.
+A minimal boilerplate react app built from scratch.
 
-It includes style and file loaders as well as a js bundler. It also supports hot-reload in development mode.
+It uses the latest features of webpack 5. It also supports react refresh in development mode.
 
 ### Support for React 17
 
@@ -15,9 +15,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
+The browser opens at [http://localhost:3000](http://localhost:3000).
 
 ### `npm run build`
 
