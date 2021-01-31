@@ -1,6 +1,8 @@
 const path = require('path');
 const { mode } = require("webpack-nano/argv");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { MiniHtmlWebpackPlugin} = require("mini-html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const headHtml = `<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">`;
 const bodyHtml = `<div id="root"></div><noscript>You need to enable JavaScript to run this app.</noscript>`;
@@ -22,36 +24,38 @@ module.exports = {
               [
                 "@babel/preset-env",
                 {
-                  "targets": "> 0.25%, not dead"
+                  "targets": "> 5%, last 2 versions, not dead"
                 }
               ],
-              "@babel/preset-react"
+              [
+                "@babel/preset-react",
+                {
+                  "development": false,
+                  "runtime": "automatic",
+                  "importSource": "react",
+                },
+              ],
             ],
-            plugins: [
-              "react-hot-loader/babel"
-            ]
           }
         }
       },
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
               modules: true,
             }
-          }
-        ]
+          },
+        ],
+        sideEffects: true,
       },
       {
         test: /\.(svg|png|jpe?g|gif)$/i,
-        loader: 'file-loader',
-        options: {
-          outputPath: 'images',
-        },
+        type: 'asset/resource',
       },
     ],
   },
@@ -68,9 +72,14 @@ module.exports = {
         body: bodyHtml,
       },
     }),
+    new MiniCssExtractPlugin({
+      filename: "styles/[name].css",
+    }),
+    new CleanWebpackPlugin(),
   ],
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist/"),
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
 };

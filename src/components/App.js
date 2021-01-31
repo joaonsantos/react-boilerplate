@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Component } from "react";
 
 import logo from "../imgs/logo.svg";
@@ -38,4 +37,4 @@ class App extends Component {
   }
 }
 
-export default hot(App);
+export default App;
