@@ -1,13 +1,13 @@
-const path = require('path');
+const path = require("path");
 const { merge } = require("webpack-merge");
-const common = require('./webpack.common.js');
-const { WebpackPluginServe } = require('webpack-plugin-serve');
+const common = require("./webpack.common.js");
+const { WebpackPluginServe } = require("webpack-plugin-serve");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = merge(common, {
   watch: true,
   module: {
-    rules : [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -20,22 +20,22 @@ module.exports = merge(common, {
               [
                 "@babel/preset-env",
                 {
-                  "targets": "> 5%, last 2 versions, not dead"
-                }
+                  targets: "> 5%, last 2 versions, not dead",
+                },
               ],
               [
                 "@babel/preset-react",
                 {
-                  "development": true,
-                  "runtime": "automatic",
-                  "importSource": "react",
+                  development: true,
+                  runtime: "automatic",
+                  importSource: "react",
                 },
               ],
             ],
-          }
-        }
+          },
+        },
       },
-    ]
+    ],
   },
   entry: ["./src", "webpack-plugin-serve/client"],
   devtool: "inline-source-map",
@@ -46,8 +46,8 @@ module.exports = merge(common, {
       static: path.join(__dirname, "dist/"),
       open: true,
       progress: "minimal",
-      ramdisk: true,
-      hmr: 'refresh-on-failure',
+      ramdisk: false,
+      hmr: "refresh-on-failure",
       liveReload: false,
       waitForBuild: true,
       historyFallback: true,
