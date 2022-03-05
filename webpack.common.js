@@ -1,7 +1,7 @@
-const path = require('path');
+const path = require("path");
 const { mode } = require("webpack-nano/argv");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { MiniHtmlWebpackPlugin} = require("mini-html-webpack-plugin");
+const { MiniHtmlWebpackPlugin } = require("mini-html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const headHtml = `<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">`;
@@ -9,7 +9,7 @@ const bodyHtml = `<div id="root"></div><noscript>You need to enable JavaScript t
 
 module.exports = {
   mode: mode,
-  entry: './src/index.js',
+  entry: "./src/index.js",
   module: {
     rules: [
       {
@@ -24,49 +24,52 @@ module.exports = {
               [
                 "@babel/preset-env",
                 {
-                  "targets": "> 5%, last 2 versions, not dead"
-                }
+                  targets: {
+                    esmodules: true,
+                  },
+                },
               ],
               [
                 "@babel/preset-react",
                 {
-                  "development": false,
-                  "runtime": "automatic",
-                  "importSource": "react",
+                  development: false,
+                  runtime: "automatic",
+                  importSource: "react",
                 },
               ],
             ],
-          }
-        }
+          },
+        },
       },
       {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               importLoaders: 1,
               modules: true,
-            }
+            },
           },
         ],
         sideEffects: true,
       },
       {
         test: /\.(svg|png|jpe?g|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
   plugins: [
     new MiniHtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: "index.html",
+      publicPath: "/",
       context: {
-        title: 'React Boilerplate',
+        title: "React Boilerplate",
         htmlAttributes: {
-          lang: 'en'
+          lang: "en",
         },
         head: headHtml,
         body: bodyHtml,
@@ -80,6 +83,7 @@ module.exports = {
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist/"),
-    assetModuleFilename: 'images/[hash][ext][query]',
+    publicPath: "/",
+    assetModuleFilename: "images/[hash][ext][query]",
   },
 };

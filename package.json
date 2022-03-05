@@ -1,14 +1,10 @@
 {
   "name": "react-boilerplate",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "private": true,
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  },
-  "scripts": {
-    "start": "NODE_ENV=development wp --config webpack.dev.js --mode development",
-    "build": "NODE_ENV=production wp --config webpack.prod.js --mode production"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -26,5 +22,15 @@
     "webpack-merge": "^5.8.0",
     "webpack-nano": "^1.1.1",
     "webpack-plugin-serve": "^1.5.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development wp --config webpack.dev.js --mode development",
+    "build": "NODE_ENV=production wp --config webpack.prod.js --mode production"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   }
 }

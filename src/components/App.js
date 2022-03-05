@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import logo from "../imgs/logo.svg";
-import appStyles from "../style/App.module.css"
+import appStyles from "../style/App.module.css";
 
 class App extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       data: [],
       loaded: false,
-      placeholder: "Loading"
+      placeholder: "Loading",
     };
   }
 
@@ -17,7 +17,7 @@ class App extends Component {
     this.setState(() => {
       return {
         data: [],
-        loaded: true
+        loaded: true,
       };
     });
   }
@@ -30,7 +30,8 @@ class App extends Component {
           <h1 className={appStyles.title}>Welcome to React</h1>
         </header>
         <p className={appStyles.intro}>
-          To get started, edit <code>src/components/App.js</code> and save to reload.
+          To get started, edit <code>src/components/App.js</code> and save to
+          reload.
         </p>
       </div>
     );

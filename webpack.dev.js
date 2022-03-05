@@ -20,7 +20,9 @@ module.exports = merge(common, {
               [
                 "@babel/preset-env",
                 {
-                  targets: "> 5%, last 2 versions, not dead",
+                  targets: {
+                    esmodules: true,
+                  },
                 },
               ],
               [
@@ -51,6 +53,11 @@ module.exports = merge(common, {
       liveReload: false,
       waitForBuild: true,
       historyFallback: true,
+      /*
+      middleware: (app, builtins) => {
+        app.use(builtins.proxy("/api", { target: "http://127.0.0.1:8000" }));
+      },
+      */
     }),
     new ReactRefreshWebpackPlugin(),
   ],
